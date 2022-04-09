@@ -1,27 +1,40 @@
 -- Creating Employees table
 
+create or replace database man_sys_db;
 use man_sys_db;
 
 create or replace table  Employees(
-	EID int primary key not null, -- Employee id
-	Name varchar(255),
-	Surname varchar(255),
+	EID int unsigned  primary key not null auto_increment , -- Employee id
+	Employee_Name varchar(255),
+	Employee_Surname varchar(255),
 	Phone varchar(255),
 	Email varchar(255),
 	DID int, -- Department ID
 	Position varchar(255) -- Position in linked department
-);
+); 
 
 create or replace table  Tasks(
-	TID int primary key not null default(1), -- Task identificator
+	TID int unsigned primary key not null auto_increment , -- Task identificator
 	About varchar(500),
 	EID int,
 	Creation_time varchar(500),
-	Task_status varchar(50) default("In progress")
+	Task_status varchar(50) default("Created")
 );
 
 create or replace table Departments(
-	DID int primary key not null,
-	Title varchar(100)
+	DID int unsigned  primary key not null auto_increment , -- Department identificator
+	Title varchar(100),
 	Size int
-)
+);
+
+insert into Employees 
+(Employee_Name, Employee_Surname, Phone, Email)
+values
+("Vasya", "Pupkin", "81123123", "vasya@corp"),
+("Petya", "Kryakov", "4114122", "petya@corp"),
+("Masha", "Seltcina", "123123", "masha@corp"),
+("Lyda", "Maryana", "31312213", "lyda@corp"),
+("Ivan", "Shpakov", "981414", "ivan@corp");
+
+insert into Tasks
+(About, EID, )
