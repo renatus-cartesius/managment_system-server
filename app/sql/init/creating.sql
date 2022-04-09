@@ -17,7 +17,7 @@ create or replace table  Tasks(
 	TID int unsigned primary key not null auto_increment , -- Task identificator
 	About varchar(500),
 	EID int,
-	Creation_time varchar(500),
+	Creation_time datetime default CURRENT_TIMESTAMP,
 	Task_status varchar(50) default("Created")
 );
 
@@ -37,4 +37,9 @@ values
 ("Ivan", "Shpakov", "981414", "ivan@corp");
 
 insert into Tasks
-(About, EID, )
+(About, EID)
+values
+("Planning tasks", 1),
+("Developing routes", 3),
+("Researhing", 2),
+("Managing graduates", 5),
