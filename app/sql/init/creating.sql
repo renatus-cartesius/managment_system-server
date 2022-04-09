@@ -1,6 +1,8 @@
 -- Creating Employees table
+
 use man_sys_db;
-create  table Employees(
+
+create or replace table  Employees(
 	EID int primary key not null, -- Employee id
 	Name varchar(255),
 	Surname varchar(255),
@@ -9,11 +11,13 @@ create  table Employees(
 	DID int, -- Department ID
 	Position varchar(255) -- Position in linked department
 );
--- Creating Tasks table
-create table Tasks(
-	TID int, -- Task ID
-	Description varchar(255),
-	Time_Stamp varchar(100),
-	Status varchar(50),
+
+create or replace table  Tasks(
+	TID int primary key not null, -- Task identificator
+	About varchar(500),
 	EID int,
+	Creation_time varchar(500),
+	Task_status varchar(20)
 );
+
+-- create table 
