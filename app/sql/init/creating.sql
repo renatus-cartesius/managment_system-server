@@ -42,4 +42,4 @@ values
 ("Planning tasks", 1),
 ("Developing routes", 3),
 ("Researhing", 2),
-("Managing graduates", 5),
+("Managing graduates", 5);
