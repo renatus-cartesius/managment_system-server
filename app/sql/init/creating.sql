@@ -13,11 +13,15 @@ create or replace table  Employees(
 );
 
 create or replace table  Tasks(
-	TID int primary key not null, -- Task identificator
+	TID int primary key not null default(1), -- Task identificator
 	About varchar(500),
 	EID int,
 	Creation_time varchar(500),
-	Task_status varchar(20)
+	Task_status varchar(50) default("In progress")
 );
 
--- create table 
+create or replace table Departments(
+	DID int primary key not null,
+	Title varchar(100)
+	Size int
+)
