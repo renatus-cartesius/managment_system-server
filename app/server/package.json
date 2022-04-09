@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server application for management system",
+  "main": "app.js",
+  "scripts": {
+    "test": "start"
+  },
+  "keywords": [
+    "NodeJS",
+    "SQL"
+  ],
+  "author": "Mihail Plyasunov",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.17.3",
+    "mariadb": "^3.0.0"
+  }
+}
