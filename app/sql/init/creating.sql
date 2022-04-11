@@ -1,10 +1,15 @@
--- Creating Employees table
+
+-- Creating user and grant him some privileges
+create or replace user 'mansys'@'%' identified by 'pass';
+grant all privileges on man_sys_db.* to 'mansys'@'%';
+flush privileges;
 
 
-create user
+-- Creating or replacing database
 create or replace database man_sys_db;
 use man_sys_db;
 
+-- Creating Employees table
 create or replace table  Employees(
 	EID int unsigned  primary key not null auto_increment , -- Employee id
 	Employee_Name varchar(255),
@@ -15,6 +20,7 @@ create or replace table  Employees(
 	Position varchar(255) -- Position in linked department
 ); 
 
+-- Creating Tasks table
 create or replace table  Tasks(
 	TID int unsigned primary key not null auto_increment , -- Task identificator
 	About varchar(500),
@@ -23,12 +29,14 @@ create or replace table  Tasks(
 	Task_status varchar(50) default("Created")
 );
 
+-- Creating Departments table
 create or replace table Departments(
 	DID int unsigned  primary key not null auto_increment , -- Department identificator
 	Title varchar(100),
 	Size int
 );
 
+-- Insert some employees and tasks
 insert into Employees 
 (Employee_Name, Employee_Surname, Phone, Email)
 values
