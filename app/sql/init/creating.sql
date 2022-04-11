@@ -1,5 +1,7 @@
 -- Creating Employees table
 
+
+create user
 create or replace database man_sys_db;
 use man_sys_db;
 
