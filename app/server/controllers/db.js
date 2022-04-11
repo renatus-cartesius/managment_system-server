@@ -4,7 +4,7 @@ var pool =
 		host: "127.0.0.1",
 		port: 3306,
 		user: "mansys",
-		password: "root",
+		password: "pass",
 		database: "man_sys_db"
 	});
 
