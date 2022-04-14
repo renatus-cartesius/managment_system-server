@@ -7,7 +7,7 @@ const express = require("express"),
 
 router.get("/get_tasks", async (req, res)=>{
     try {
-        console.log(req.url);
+        console.log("[?] Giving list of all tasks");
         const result = await db.pool.query("select * from Tasks");
         res.send(result);
     }
@@ -16,14 +16,36 @@ router.get("/get_tasks", async (req, res)=>{
     }
 });
 
-router.get("/create_task", async(req, res)=>{
-    let description = req.body.description;
+router.post("/create_task", async(req, res)=>{
+    let about = req.body.description;
     let eid = req.body.eid;
     try {
-        res.send(`${description} + ${eid}`);
-        console.log(`asdf asdf sd${description} + ${eid}`);
+        console.log(`[+]Adding new tasks: About: \"${about}\", Employee_ID: ${eid}`);
+        const result = await db.pool.query(`insert into Tasks (About, EID) values (\"${about}\", ${eid})`);
+        res.send({status: "Succesfull added", about, eid});
     } catch (error) {
         throw error;
+    }
+});
+
+router.post("/complete_task", async(req, res)=>{
+    let tid = req.body.tid;
+    try {
+        console.log(`[-] Completing tasks with Task_ID: ${tid}`);
+        const result = await db.pool.query(`update Tasks set Task_status = "Complete" where TID = ${tid}`);
+        res.send({status: "Succesfull delete tasks", tid})
+    } catch (error) {
+        throw error;
+    }
+});
+
+roter.get("/holder_employee", async(req, res)=>{
+    let tid = req.body.tid;
+    try{
+        console.log(`[?] Giving employee `)
+    }
+    catch(err){
+        throw err;
     }
 });
 
