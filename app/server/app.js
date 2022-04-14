@@ -2,7 +2,8 @@
 const express = require("express"),
     app = express(),
     routes = require("./routes/index"),
-    port = 8080;
+    port = 8080,
+    bodyParser = require("body-parser");
 
 // Using body parser
 app.use(bodyParser.json());
