@@ -1,11 +1,22 @@
-const express = require("express");
-const db = require("./controllers/db");
-const app = express();
-const port = 8080;
-const bodyParser = require("body-parser");
+// Express requiries
+const express = require("express"),
+    app = express(),
+    routes = require("./routes/index"),
+    port = 8080;
 
-app.get("/", (req, res)=>{
-    res.send("It`s ok man, Mariadb is working");
-});
+// Using body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+// Using routes
+app.use('/api', routes)
+
+// +----------------------+
+// | Tables_in_man_sys_db |
+// +----------------------+
+// | Departments          |
+// | Employees            |
+// | Tasks                |
+// +----------------------+
 
 app.listen(port, ()=>{console.log(`Listening on ${port}`)})
