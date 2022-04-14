@@ -39,10 +39,12 @@ router.post("/complete_task", async(req, res)=>{
     }
 });
 
-roter.get("/holder_employee", async(req, res)=>{
+router.get("/holder_employee", async(req, res)=>{
     let tid = req.body.tid;
     try{
         console.log(`[?] Giving employee `)
+        const result = await db.pool.query(`select `);
+        res.send({status: "OK"});
     }
     catch(err){
         throw err;

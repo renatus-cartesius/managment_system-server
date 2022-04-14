@@ -11,30 +11,39 @@ use man_sys_db;
 
 -- Creating Employees table
 create or replace table  Employees(
-	EID int unsigned  primary key not null auto_increment , -- Employee id
+	ID int not null auto_increment , -- Employee identificator
 	Employee_Name varchar(255),
 	Employee_Surname varchar(255),
 	Phone varchar(255),
 	Email varchar(255),
 	DID int, -- Department ID
-	Position varchar(255) -- Position in linked department
-); 
+	Position varchar(255), -- Position in linked department
+
+	primary key(ID)
+) ENGINE=INNODB; 
 
 -- Creating Tasks table
-create or replace table  Tasks(
-	TID int unsigned primary key not null auto_increment , -- Task identificator
+create or replace table Tasks(
+	ID int primary key not null auto_increment , -- Task identificator
 	About varchar(500),
 	EID int,
+	
+
 	Creation_time datetime default CURRENT_TIMESTAMP,
-	Task_status varchar(50) default("Created")
-);
+	Task_status varchar(50) default("Created"),
+	
+	index E_ID (EID),
+	foreign key (EID)
+		references Employees(ID)
+		on delete cascade
+) ENGINE=INNODB;
 
 -- Creating Departments table
 create or replace table Departments(
-	DID int unsigned  primary key not null auto_increment , -- Department identificator
+	ID int unsigned  primary key not null auto_increment , -- Department identificator
 	Title varchar(100),
 	Size int
-);
+) ENGINE=INNODB;
 
 -- Insert some employees and tasks
 insert into Employees 
