@@ -1,16 +1,22 @@
+-- Initialization SQL script that build default bases and tables
 
 -- Creating user and grant him some privileges
 create or replace user 'mansys'@'%' identified by 'pass';
 grant all privileges on man_sys_db.* to 'mansys'@'%';
 flush privileges;
 
-
+drop database if exists man_sys_db;
 -- Creating or replacing database
-create or replace database man_sys_db;
+create database man_sys_db;
 use man_sys_db;
 
+drop table if exists Employees;
+drop table if exists Tasks;
+drop table if exists Departments;
+
+
 -- Creating Employees table
-create or replace table  Employees(
+create table  Employees(
 	ID int not null auto_increment , -- Employee identificator
 	Employee_Name varchar(255),
 	Employee_Surname varchar(255),
@@ -23,7 +29,7 @@ create or replace table  Employees(
 ) ENGINE=INNODB; 
 
 -- Creating Tasks table
-create or replace table Tasks(
+create table Tasks(
 	ID int primary key not null auto_increment , -- Task identificator
 	About varchar(500),
 	EID int,
@@ -39,11 +45,12 @@ create or replace table Tasks(
 ) ENGINE=INNODB;
 
 -- Creating Departments table
-create or replace table Departments(
+create table Departments(
 	ID int unsigned  primary key not null auto_increment , -- Department identificator
 	Title varchar(100),
 	Size int
 ) ENGINE=INNODB;
+
 
 -- Insert some employees and tasks
 insert into Employees 
@@ -62,3 +69,29 @@ values
 ("Developing routes", 3),
 ("Researhing", 2),
 ("Managing graduates", 5);
+
+-- ---------------------------------
+-- | Strings for mechanics testing |
+-- ---------------------------------
+
+-- drop table if exists parent;
+-- drop table if exists child;
+
+-- CREATE TABLE parent (
+--     id INT NOT NULL,
+--     PRIMARY KEY (id)
+-- ) ENGINE=INNODB;
+
+-- CREATE TABLE child (
+--     id INT,
+--     parent_id INT,
+--     INDEX par_ind (parent_id),
+--     FOREIGN KEY (parent_id)
+--         REFERENCES parent(id)
+--         ON DELETE set null
+-- ) ENGINE=INNODB;
+
+-- insert into parent values (234), (238);
+-- insert into child values (1, 234), (2, 234), (3, 238);
+-- select * from parent;
+-- select * from child;

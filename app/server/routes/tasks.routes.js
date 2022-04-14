@@ -43,7 +43,11 @@ router.get("/holder_employee", async(req, res)=>{
     let tid = req.body.tid;
     try{
         console.log(`[?] Giving employee `)
-        const result = await db.pool.query(`select `);
+        const result = await db.pool.query(`
+        select * from Employees 
+            inner join Tasks
+            on Employees.ID = Tasks.EID
+        `);
         res.send({status: "OK"});
     }
     catch(err){
