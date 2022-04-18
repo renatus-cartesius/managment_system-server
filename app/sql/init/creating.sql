@@ -18,8 +18,8 @@ drop table if exists Departments;
 -- Creating Employees table
 create table  Employees(
 	ID int not null auto_increment , -- Employee identificator
-	Employee_Name varchar(255),
-	Employee_Surname varchar(255),
+	Name varchar(255),
+	Surname varchar(255),
 	Phone varchar(255),
 	Email varchar(255),
 	DID int, -- Department ID
@@ -54,7 +54,7 @@ create table Departments(
 
 -- Insert some employees and tasks
 insert into Employees 
-(Employee_Name, Employee_Surname, Phone, Email)
+(Name, Surname, Phone, Email)
 values
 ("Vasya", "Pupkin", "81123123", "vasya@corp"),
 ("Petya", "Kryakov", "4114122", "petya@corp"),

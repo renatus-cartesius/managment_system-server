@@ -8,7 +8,11 @@ const express = require("express"),
 router.get("/get_tasks", async (req, res)=>{
     try {
         console.log("[?] Giving list of all tasks");
-        const result = await db.pool.query("select * from Tasks");
+        const result = await db.pool.query(`
+        select About, Task_status, Creation_time, Employees.Name, Employees.Surname 
+        from Tasks inner join Employees
+            on Tasks.EID = Employees.ID
+        `);
         res.send(result);
     }
     catch(err){
@@ -32,7 +36,7 @@ router.post("/complete_task", async(req, res)=>{
     let tid = req.body.tid;
     try {
         console.log(`[-] Completing tasks with Task_ID: ${tid}`);
-        const result = await db.pool.query(`update Tasks set Task_status = "Complete" where TID = ${tid}`);
+        const result = await db.pool.query(`update Tasks set Task_status = "Complete" where ID = ${tid}`);
         res.send({status: "Succesfull delete tasks", tid})
     } catch (error) {
         throw error;
@@ -43,11 +47,7 @@ router.get("/holder_employee", async(req, res)=>{
     let tid = req.body.tid;
     try{
         console.log(`[?] Giving employee `)
-        const result = await db.pool.query(`
-        select * from Employees 
-            inner join Tasks
-            on Employees.ID = Tasks.EID
-        `);
+        // const EID = await db.pool.query(`select `);
         res.send({status: "OK"});
     }
     catch(err){
