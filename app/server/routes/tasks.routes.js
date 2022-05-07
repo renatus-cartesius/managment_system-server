@@ -5,7 +5,7 @@ const express = require("express"),
     router = express.Router();
 
 
-router.get("/get_tasks", async (req, res)=>{
+router.get("/tasks", async (req, res)=>{
     try {
         console.log("[?] Giving list of all tasks");
         const result = await db.pool.query(`
