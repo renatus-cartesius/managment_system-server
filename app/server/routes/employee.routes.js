@@ -14,4 +14,14 @@ router.get("/employees", async (req, res)=>{
 	}
 });
 
+router.get("/employee", async (req, res)=>{
+	try{
+		const result = await db.pool.query(`select * from Employees where ID=${req.query.eid}`);
+		console.log("[?] Giving information about concrete Employee: ");
+		res.send(result);
+	}catch(err){	
+		throw err;
+	}
+});
+
 module.exports = router;

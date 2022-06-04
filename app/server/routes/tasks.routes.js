@@ -44,11 +44,13 @@ router.post("/complete_task", async(req, res)=>{
 });
 
 router.get("/holder_employee", async(req, res)=>{
-    let tid = req.body.tid;
+    let tid = req.query.tid;
     try{
-        console.log(`[?] Giving employee `)
-        // const EID = await db.pool.query(`select `);
-        res.send({status: "OK"});
+        console.log(`[?] Giving employee by task ID=${tid}`)
+        const task = await db.pool.query(`select * from Tasks where ID=${tid}`);
+	const employee = await db.pool.query(`select * from Employees where ID=${task[0].EID}`);
+        res.send(employee);
+
     }
     catch(err){
         throw err;
