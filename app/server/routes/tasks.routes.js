@@ -9,7 +9,7 @@ router.get("/tasks", async (req, res)=>{
     try {
         console.log("[?] Giving list of all tasks");
         const result = await db.pool.query(`
-        select About, Task_status, Creation_time, Employees.Name, Employees.Surname 
+        select About, Task_status, Creation_time, Employees.Name, Employees.Surname, Employees.ID, Employees.Position
         from Tasks inner join Employees
             on Tasks.EID = Employees.ID
         `);

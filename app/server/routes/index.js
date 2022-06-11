@@ -5,7 +5,7 @@ const express = require("express"),
     tasksRoutes = require("./tasks.routes");
 
 // Using Employees router
-router.use("/employees", employessRoutes);
+router.use("/employee", employessRoutes);
 router.use("/task", tasksRoutes);
 
 module.exports = router;

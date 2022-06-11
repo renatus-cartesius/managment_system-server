@@ -14,6 +14,7 @@ drop table if exists Employees;
 drop table if exists Tasks;
 drop table if exists Departments;
 
+set names utf8;
 
 -- Creating Employees table
 create table  Employees(
@@ -31,7 +32,7 @@ create table  Employees(
 -- Creating Tasks table
 create table Tasks(
 	ID int primary key not null auto_increment , -- Task identificator
-	About varchar(500),
+	About varchar(1500),
 	EID int,
 	
 
@@ -54,21 +55,34 @@ create table Departments(
 
 -- Insert some employees and tasks
 insert into Employees 
-(Name, Surname, Phone, Email)
+(Name, Surname, Phone, Email, DID, Position)
 values
-("Vasya", "Pupkin", "81123123", "vasya@corp"),
-("Petya", "Kryakov", "4114122", "petya@corp"),
-("Masha", "Seltcina", "123123", "masha@corp"),
-("Lyda", "Maryana", "31312213", "lyda@corp"),
-("Ivan", "Shpakov", "981414", "ivan@corp");
+
+
+("Вася", "Пупкин", "81123123", "vasya@corp", 2, "Старший разработчик"),
+("Петя", "Кряков", "4114122", "petya@corp" ,1, "Менеджер"),
+("Маша", "Сельцина", "123123", "masha@corp", 2, "Глава отдела разработки"),
+("Люда", "Марьина", "31312213", "lyda@corp", 2, "Системный администратор"),
+("Иван", "Шпаков", "981414", "ivan@corp", 2, "Младший Разработчик"),
+("Глеб", "Матийшин", "228337", "gleb228338332455@mail.ru", 2, "Помощник старшего разработчика"),
+("Артём", "Мирный", "12869736", "Artom@com",1, "Администратор планов"),
+("Ольга", "Марковна", "4189150", "pat4276@yopmail.com",2, "Разработчик"),
+("Михаил", "Филиппович", "9528040", "xe6500@yopmail.com",2, "Тестировщик"),
+("Макар ", "Киселев ", "975318", "veu7465@yopmail.com",2, "Разработчик"),
+("Полина ", "Калинина", "5001427", "gaun3812@yopmail.com",1, "Менеджер"),
+("Дарья ", "Егорова", "4027955", "h2884@yopmail.com",1, "Глава отдела проектирования"),
+("Ева ", "Захарова", "5076084", "brafi6340@yopmail.com",2, "Младший Разработчик"),
+("Кирилл ", "Федотов", "3391389", "cu1870@yopmail.com",2, "Разработчик");
 
 insert into Tasks
 (About, EID)
 values
-("Planning tasks", 1),
-("Developing routes", 3),
-("Researhing", 2),
-("Managing graduates", 5);
+("Разработка системных модулей", 1),
+("Управление персоналом", 3),
+("Мониторинг качества работы", 2),
+("Разработка элементов пользовательского интерфейса", 5),
+("Межмодульное тестирование", 5),
+("Проектировани планов работ", 12);
 
 -- ---------------------------------
 -- | Strings for mechanics testing |
