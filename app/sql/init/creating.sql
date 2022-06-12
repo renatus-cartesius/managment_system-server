@@ -49,15 +49,19 @@ create table Tasks(
 create table Departments(
 	ID int unsigned  primary key not null auto_increment , -- Department identificator
 	Title varchar(100),
-	Size int
+	Head_ID int
 ) ENGINE=INNODB;
 
+insert into Departments
+(Title, Head_ID)
+values
+("Отдел разработок", 3),
+("Отдел проектирования", 12);
 
 -- Insert some employees and tasks
 insert into Employees 
 (Name, Surname, Phone, Email, DID, Position)
 values
-
 
 ("Вася", "Пупкин", "81123123", "vasya@corp", 2, "Старший разработчик"),
 ("Петя", "Кряков", "4114122", "petya@corp" ,1, "Менеджер"),
@@ -81,7 +85,7 @@ values
 ("Управление персоналом", 3),
 ("Мониторинг качества работы", 2),
 ("Разработка элементов пользовательского интерфейса", 5),
-("Межмодульное тестирование", 5),
+("Межмодульное тестирование", 9),
 ("Проектировани планов работ", 12);
 
 -- ---------------------------------
